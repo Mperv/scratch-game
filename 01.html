@@ -35,21 +35,24 @@
 
         let cursors;
         let currentBack = 0;
-        let backgrounds = ['sky', 'sea', 'space'];
+        let backgrounds = ['sea', 'space', 'sky'];
 
         function create() {
             let self = this;
             console.log(this);
             this.changeBackground(backgrounds[currentBack]);
-            cursors = this.createdGame.input.keyboard.createCursorKeys();
+            //            this.test();
+            cursors = game.createdGame.input.keyboard.createCursorKeys();
 
-            let keyObject = this.createdGame.input.keyboard.addKey("W"); // Get key object
+            let keyObject = game.createdGame.input.keyboard.addKey("W"); // Get key object
             keyObject.on("up", function (event) {
                 currentBack++;
                 if (currentBack >= backgrounds.length) {
-                    currentBack = 0;
+                    currentBack = -1;
+                    game.setBackgroundColor(0x00FFFF);
+                    return;
                 }
-                self.changeBackground(backgrounds[currentBack]);
+                game.changeBackground(backgrounds[currentBack]);
             });
         }
 
