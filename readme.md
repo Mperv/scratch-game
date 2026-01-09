@@ -86,7 +86,7 @@ function create() {
     console.log(player.costume);
     // количество костюмов (фреймов)
     console.log(player.costumesCount);
-    // следующий костюм
-    player.nextCostume();
+    // циклирут все существуещие костюмы заданое количество раз
+    player.cycleCostume(value);
 
 
