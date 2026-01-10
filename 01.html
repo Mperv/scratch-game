@@ -66,9 +66,8 @@
                     game.setBackgroundColor(0x00FFFF);
                     return;
                 }
-                sprite.visible = true;
+                sprite.changeVisibility();
                 sprite.moveForward(10);
-                //sprite.nextCostume();
                 sprite.changeCostumeBy(1);
                 console.log(sprite.costume);
                 console.log(sprite.costumesCount);
