@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Made using Scratch Game version v0.26.2a</title>
+    <script src="lib/phaser.min.js"></script>
+    <script src="lib/scratch_game.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        let game = new ScratchGame(800, 600);
+        game.preload = preload;
+        game.create = create;
+        game.update = update;
+
+        function preload() {
+            this.loadImage('landscape', 'assets/landscape.jpg');
+            this.loadImage('sea', 'assets/sea.jpg');
+            
+            this.loadSpritesheet('dude', 'assets/dude.png', 32, 48);
+        }
+
+        let backgrounds = ['sea', 'landscape'];
+        let currentBack = 0;
+        let tick = 0;
+
+        function create() {
+            this.changeBackground(backgrounds[currentBack]);
+        }
+
+
+
+        function update() {
+            ++tick
+            if(tick % 50 == 1){
+                ++currentBack;
+                if(currentBack >= backgrounds.length){
+                    currentBack = 0;
+                }
+                this.changeBackground(backgrounds[currentBack]);
+            }
+            console.log(tick);
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -17,14 +17,14 @@
 ## Инициализация игры
 
 ```javascript
-let game = new ScratchGame(860, 720);
+let game = new ScratchGame(800, 600);
 game.preload = preload;
 game.create = create;
 game.update = update;
 ```
 
 Функции preload, create и update должны быть определены в том же файле.
-860, 720 - размеры окна игры.
+800, 600 - размеры окна игры.
 
 ## Загрузка изображений в preload
 
