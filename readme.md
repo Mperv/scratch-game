@@ -1,5 +1,8 @@
-# Scratch Game
+# Scratch Game 
 
+# Версия Scratch Game v0.26.2a
+
+# Введение
 ## Подключение библиотек
 
 Прежде всего надо подключить Phaser и Scratch Game
@@ -14,14 +17,14 @@
 ## Инициализация игры
 
 ```javascript
-let game = new ScratchGame(800, 600);
+let game = new ScratchGame(860, 720);
 game.preload = preload;
 game.create = create;
 game.update = update;
 ```
 
 Функции preload, create и update должны быть определены в том же файле.
-800, 600 - размеры окна игры.
+860, 720 - размеры окна игры.
 
 ## Загрузка изображений в preload
 
