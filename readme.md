@@ -88,7 +88,7 @@ function create() {
     console.log(player.costumesCount);
     // следующий костюм
     player.nextCostume();
-    // циклирут все существуещие костюмы заданое количество раз
-    player.cycleCostume(value);
+    // переключает костюм на заданное количество позиций (по кругу)
+    player.changeCostumeBy(value);
 
 
