@@ -68,7 +68,8 @@
                 }
                 sprite.visible = true;
                 sprite.moveForward(10);
-                sprite.nextCostume();
+                //sprite.nextCostume();
+                sprite.cycleCostume(1);
                 console.log(sprite.costume);
                 console.log(sprite.costumesCount);
                 game.changeBackground(backgrounds[currentBack]);
