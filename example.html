@@ -31,9 +31,13 @@
         let backgrounds = ['sea', 'landscape'];
         let currentBack = 0;
         let tick = 0;
+        let dude;
 
         function create() {
-            this.changeBackground(backgrounds[currentBack]);
+            dude = this.createSprite('dude', 32, 48);
+            dude.costume = 0;
+            dude.x = 400;
+            dude.y = 50;
         }
 
 
@@ -47,7 +51,15 @@
                 }
                 this.changeBackground(backgrounds[currentBack]);
             }
-            console.log(tick);
+
+            if(tick % 5 == 0){
+                dude.moveForward(12);
+                dude.turn(3);
+            }
+
+            if(tick % 15 == 0){
+                dude.nextCostume();
+            }
         }
 
     </script>
