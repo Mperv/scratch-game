@@ -1,6 +1,4 @@
-# Scratch Game 
-
-# Версия Scratch Game v0.26.2b
+# Scratch Game v0.26.2b
 
 # Введение
 ## Подключение библиотек
