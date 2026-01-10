@@ -79,7 +79,7 @@ function create() {
     // скрыть спрайт
     player.visible = false;
     // меняет видемость спрайта
-    player.cycleVisibility();
+    player.changeVisibility();
 
     // переменная costume - номер текущего костюма (фрейма), нумерация начинается с 0
     // изменение номера костюма (фрейма)
