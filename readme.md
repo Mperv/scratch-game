@@ -1,4 +1,4 @@
-# Scratch Game
+# Scratch Game v0.26.2c
 
 ## Подключение библиотек
 
