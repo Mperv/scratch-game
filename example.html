@@ -32,6 +32,7 @@
         let currentBack = 0;
         let tick = 0;
         let dude;
+        let run = 0;
 
         function create() {
             dude = this.createSprite('dude', 32, 48);
@@ -52,13 +53,19 @@
                 this.changeBackground(backgrounds[currentBack]);
             }
 
-            if(tick % 5 == 0){
-                dude.moveForward(12);
-                dude.turn(3);
+            if(game.isKeyDown('SPACE')){
+                ++run;
             }
 
-            if(tick % 15 == 0){
-                dude.nextCostume();
+            if(run % 2 == 0){
+                if(tick % 15 == 0){
+                    dude.nextCostume();
+                }
+
+                if(tick % 5 == 0){
+                    dude.moveForward(12);
+                    dude.turn(3);
+                }
             }
         }
 
