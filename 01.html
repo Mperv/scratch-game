@@ -37,13 +37,14 @@
         let currentBack = 0;
         let backgrounds = ['sea', 'space', 'sky'];
         let sprite2;
+        let sprite;
 
         function create() {
             let self = this;
             console.log(this);
             this.changeBackground(backgrounds[currentBack]);
 
-            let sprite = this.createSprite('dude', 100, 100);
+            sprite = this.createSprite('dude', 100, 100);
             sprite.x = 400;
             sprite.direction = 45;
             sprite.size = 2;
@@ -73,11 +74,18 @@
                 console.log(sprite.costumesCount);
                 game.changeBackground(backgrounds[currentBack]);
             });
+            console.log(game.createdGame.input.keyboard);
         }
 
 
 
         function update() {
+            console.log(game.mouseX);
+            console.log(game.mouseY);
+            if (game.isMouseDown()) {
+                sprite2.destroy();
+            }
+
             if (cursors.left.isDown) {
                 console.log('left');
             }
