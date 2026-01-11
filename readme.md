@@ -1,6 +1,5 @@
-# Scratch Game v0.26.2b
+# Scratch Game
 
-# Введение
 ## Подключение библиотек
 
 Прежде всего надо подключить Phaser и Scratch Game
@@ -36,8 +35,8 @@ function preload() {
     this.loadImage('sky', 'assets/sky.png');
     // читается картинка из 'assets/dude.png' и регистрируется в системе под именем dude
     // загруженная картинка делится на куски высотой 48 пикселей и шириной 32 пикселей
-    // каждый кусок - это отдельный "костюм" (можно, наверное и отдельными картинками, но плодить миллион
-    // картинок - так себе план). Каждый "костюм" называется "frame".
+    // каждый кусок - это отдельный "костюм" (можно, наверное и отдельными картинками, но
+    // плодить миллион картинок - так себе план). Каждый "костюм" называется "frame".
     this.loadSpritesheet('dude', 'assets/dude.png', 32, 48);
 }
 ```
@@ -56,10 +55,12 @@ function create() {
     // установка цвета фона
     this.setBackgroundColor(0x00FFFF);
 
-    // создаём (клонируем) спрайт. Сам спрайт мы тоже можем записать в переменную (здесь используется переменная player)
+    // создаём (клонируем) спрайт. Сам спрайт мы тоже можем записать в переменную 
+    // (здесь используется переменная player)
     // которую можно использовать для управления спрайтом
     let player = this.createSprite('dude', 100, 100);
-    // узнаём / задаём /изменяем позицию, направление (если не задать будет 0), размер (если не задать будет 1)
+    // узнаём / задаём /изменяем позицию, направление (если не задать будет 0), размер 
+    // (если не задать будет 1)
     player.x = 400;
     player.y = 300;
     player.direction = 90;
@@ -94,4 +95,37 @@ function create() {
     // переключает костюм на заданное количество позиций (по кругу)
     player.changeCostumeBy(value);
 
+    // уничтожает спрайт, спрайт удаляется из игры и больше с ним ничего нельзя делать
+    player.destroy();
+}
+```
+
+## Обновление игры
+
+Функция `update` вызывается каждый "тик" игры, то есть несколько раз в секунду.
+Фактически, она замещает бесконечный цикл ("повторять всегда") в Scratch.
+После каждого выполнения update экран перерисовывается.
+
+```javascript
+function update() {
+    // проверяет, нажата ли клавиша A
+    console.log(game.isKeyDown('A'));
+    // можно так-же использовать, для проверки нажатия клавиш курсора и специальных клавиш
+    console.log("up", game.isKeyDown('UP'));
+    console.log("down", game.isKeyDown('DOWN'));
+    console.log("left", game.isKeyDown('LEFT'));
+    console.log("right", game.isKeyDown('RIGHT'));
+    console.log("shift", game.isKeyDown('SHIFT'));
+    console.log("ctrl", game.isKeyDown('CTRL'));
+    console.log("alt", game.isKeyDown('ALT'));
+    console.log("space", game.isKeyDown('SPACE'));
+    console.log("enter", game.isKeyDown('ENTER'));
+    console.log("esc", game.isKeyDown('ESC'));
+
+    // проверяет, нажата ли кнопка мыши
+    console.log(game.isMouseDown());
+    // получает координаты мыши
+    console.log(game.mouseX, game.mouseY);
+}
+```
 
