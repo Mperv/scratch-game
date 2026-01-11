@@ -39,6 +39,10 @@
             dude.costume = 0;
             dude.x = 400;
             dude.y = 50;
+
+            game.onKeyDown("SPACE", function() {
+                ++run;
+            });
         }
 
 
@@ -50,11 +54,7 @@
                 if(currentBack >= backgrounds.length){
                     currentBack = 0;
                 }
-                this.changeBackground(backgrounds[currentBack]);
-            }
-
-            if(game.isKeyDown('SPACE')){
-                ++run;
+                game.changeBackground(backgrounds[currentBack]);
             }
 
             if(run % 2 == 0){
