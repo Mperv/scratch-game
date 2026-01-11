@@ -56,7 +56,20 @@
             sprite.visible = false;
             sprite.tag = 'player';
 
-            //            this.test();
+            this.onKeyDown("W", function (event) {
+                console.log("W pressed", event.duration);
+            });
+            this.onKeyUp("W", function (event) {
+                console.log("W up", event.duration);
+            });
+
+            this.onMouseDown(function (event) {
+                console.log("Mouse down", event);
+            });
+            this.onMouseUp(function (event) {
+                console.log("Mouse up", event);
+            });
+
             cursors = game.createdGame.input.keyboard.createCursorKeys();
 
             let keyObject = game.createdGame.input.keyboard.addKey("W"); // Get key object
@@ -80,8 +93,6 @@
 
 
         function update() {
-            console.log(game.mouseX);
-            console.log(game.mouseY);
             if (game.isMouseDown()) {
                 sprite2.destroy();
             }

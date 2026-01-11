@@ -97,6 +97,24 @@ function create() {
 
     // уничтожает спрайт, спрайт удаляется из игры и больше с ним ничего нельзя делать
     player.destroy();
+
+    // задание функции, которая будет вызываться при нажатии клавиши W
+    this.onKeyDown("W", function (event) {
+        console.log("W down", event.duration);
+    });
+    // задание функции, которая будет вызываться при отпускании клавиши W
+    this.onKeyUp("W", function (event) {
+        console.log("W up", event.duration);
+    });
+
+    // задание функции, которая будет вызываться при нажатии мыши
+    this.onMouseDown(function (event) {
+        console.log("Mouse down", event);
+    });
+    // задание функции, которая будет вызываться при отпускании мыши
+    this.onMouseUp(function (event) {
+        console.log("Mouse up", event);
+    });
 }
 ```
 
