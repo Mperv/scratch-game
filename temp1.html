@@ -84,19 +84,36 @@
                 console.log(sprite.costumesCount);
                 game.changeBackground(backgrounds[currentBack]);
             });
+
+            sprite.onOverlap(sprite2, function () {
+                console.log("Overlap");
+            });
         }
 
 
 
         function update() {
-            if (game.isMouseDown()) {
-                sprite2.destroy();
+            if (game.isKeyDown('UP') || game.isKeyDown('W')) {
+                sprite.y -= 2;
             }
-
-            sprite2.x += 2;
-            sprite2.y += 100;
-            sprite2.y -= 100;
-            sprite2.x -= 1;
+            if (game.isKeyDown('DOWN') || game.isKeyDown('S')) {
+                sprite.y += 2;
+            }
+            if (game.isKeyDown('LEFT') || game.isKeyDown('A')) {
+                sprite.x -= 2;
+            }
+            if (game.isKeyDown('RIGHT') || game.isKeyDown('D')) {
+                sprite.x += 2;
+            }
+            if (game.isKeyDown('MINUS') || game.isKeyDown('NUMPAD_SUBTRACT')) {
+                player.size -= 0.1;
+            }
+            if (game.isKeyDown('Q')) {
+                sprite.turn(-5);
+            }
+            if (game.isKeyDown('E')) {
+                sprite.turn(5);
+            }
         }
 
         //createSprite()

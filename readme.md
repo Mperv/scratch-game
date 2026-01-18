@@ -186,6 +186,9 @@ function update() {
     console.log(game.isMouseDown());
     // получает координаты мыши
     console.log(game.mouseX, game.mouseY);
+
+    // узнать текущее время от начала игры в миллисекундах
+    console.log(game.getTime());
 }
 ```
 
