@@ -42,6 +42,16 @@
 
             text2 = this.createText(10, 550, "");
             text2.color = '#FFFFFF';
+
+            game.onKeyDown('Z', function () {
+                player.changeCostumeBy(-1);
+            });
+            game.onKeyDown('C', function () {
+                player.changeCostumeBy(1);
+            });
+            game.onKeyDown('SPACE', function () {
+                player.changeVisibility();
+            });
         }
 
         function update() {
@@ -68,12 +78,6 @@
             }
             if (game.isKeyDown('E')) {
                 player.turn(5);
-            }
-            if (game.isKeyDown('Z')) {
-                player.changeCostumeBy(-1);
-            }
-            if (game.isKeyDown('C')) {
-                player.changeCostumeBy(1);
             }
 
             text2.text = "X: " + player.x + "\nY: " + player.y + "\nSize: " + player.size;

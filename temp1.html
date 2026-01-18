@@ -44,12 +44,12 @@
             console.log(this);
             this.changeBackground(backgrounds[currentBack]);
 
-            sprite = this.createSprite('dude', 100, 100);
+            sprite = this.createSprite(100, 100, 'dude');
             sprite.x = 400;
             sprite.direction = 45;
             sprite.size = 2;
 
-            sprite2 = this.createSprite('dude', 200, 100);
+            sprite2 = this.createSprite(200, 100, 'dude');
             sprite2.direction = 45;
             sprite2.size = 2;
 
@@ -70,10 +70,7 @@
                 console.log("Mouse up", event);
             });
 
-            cursors = game.createdGame.input.keyboard.createCursorKeys();
-
-            let keyObject = game.createdGame.input.keyboard.addKey("W"); // Get key object
-            keyObject.on("up", function (event) {
+            game.onKeyUp("W", function (event) {
                 currentBack++;
                 if (currentBack >= backgrounds.length) {
                     currentBack = -1;
@@ -87,7 +84,6 @@
                 console.log(sprite.costumesCount);
                 game.changeBackground(backgrounds[currentBack]);
             });
-            console.log(game.createdGame.input.keyboard);
         }
 
 
@@ -97,9 +93,6 @@
                 sprite2.destroy();
             }
 
-            if (cursors.left.isDown) {
-                console.log('left');
-            }
             sprite2.x += 2;
             sprite2.y += 100;
             sprite2.y -= 100;
