@@ -140,6 +140,22 @@ function create() {
     // уничтожает спрайт, спрайт удаляется из игры и больше с ним ничего нельзя делать
     player.destroy();
 
+    // проверка столкновения спрайтов (сравниваются только прямоугольники)
+    player.onRectangularOverlap(anotherSprite, function (event) {
+        console.log("мои границы столкнулись с границами другого спрайта", event);
+    });
+
+    // проверка столкновения спрайтов (сравниваются попиксельно, точность 2 пикселя)
+    player.onOverlap(anotherSprite, function (event) {
+        console.log("мои пиксели столкнулись с пикселями другого спрайта", event);
+    });
+
+    // проверка столкновения спрайтов (сравниваются пиксели, точность 1 пиксель, медленнее,
+    // чем предыдущий вариант)
+    player.onOverlap(anotherSprite, function (event) {
+        console.log("мои пиксели столкнулись с пикселями другого спрайта", event);
+    }, 1);
+
     // задание функции, которая будет вызываться при нажатии клавиши W
     this.onKeyDown("W", function (event) {
         console.log("W down", event.duration);
