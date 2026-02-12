@@ -1,8 +1,8 @@
-# Scratch Game v0.26.6b
+# ScratchGame v0.26.6b
 
 ## Начало / подготовка
 
-Для разработки игры на Phaser и Scratch Game необходимо:
+Для разработки игры на Phaser и ScratchGame необходимо:
 - скачать phaser.min.js и scratch_game.js, поместить их в папку lib
 - поместить файлы игры (картинки) в папку assets
 - создать html файл в котором подключить библиотеки
