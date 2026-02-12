@@ -9,7 +9,7 @@
 ```html
 <head>
     <script src="lib/phaser.min.js"></script>
-    <script src="lib/scratch_game.js"></script>
+    <script src="lib/ScratchGame.js"></script>
 </head>
 ```
 - запустить веб-сервер (веб-сервер необходим, потому что в противном случае браузер не сможет загрузить файлы игры)
