@@ -1,34 +1,34 @@
 # ScratchGame v0.26.6b
 
-Русская версия [readme.md](readme.md)
+Русская версия этого файла [readme.md](readme.md)
 
 ## Getting started / preparation
 
-Для разработки игры на Phaser и ScratchGame необходимо:
-- скачать phaser.min.js и scratch_game.js, поместить их в папку lib
-- поместить файлы игры (картинки) в папку assets
-- создать html файл в котором подключить библиотеки
+To develop a game using Phaser and ScratchGame, you need to:
+- download phaser.min.js and scratch_game.js and place them in the `lib` folder
+- place game files (images) in the `assets` folder
+- create an html file where you include the libraries
 ```html
 <head>
     <script src="lib/phaser.min.js"></script>
     <script src="lib/ScratchGame.js"></script>
 </head>
 ```
-- запустить веб-сервер (веб-сервер необходим, потому что в противном случае браузер не сможет загрузить файлы игры)
+- start a web server (a web server is necessary because otherwise the browser will not be able to load game files)
 
-Если установлен python, то можно запустить веб-сервер следующей командой:
+If python is installed, you can start a web server with the following command:
 ```bash
 python -m http.server 8080
 ```
 
-Если установлен node.js, то можно запустить веб-сервер следующей командой:
+If node.js is installed, you can start a web server with the following command:
 ```bash
 npx http-server . -p 8080
 ```
 
-Текущая папка станет корнем веб-сервера, котрый будет доступен по адресу http://localhost:8080/
+The current folder will become the root of the web server, which will be available at http://localhost:8080/
 
-- теперь можно создавать в html файле раздел
+- now you can create a section in the html file
 
 ```html
 <body>
@@ -40,20 +40,20 @@ npx http-server . -p 8080
 </body>
 ```
 
-и начинать писать в нём код игры.
+and start writing game code in it.
 
-## Пример игры
+## Game Example
 
-Можно посмотреть пример игры в файле [01.html](01.html).
-Требуется только две картинки:
+You can see an example of a game in the file [01.html](01.html).
+Only two images are required:
 - sea.jpg
 - dude.png
 
-Игра устанавливает фон, создаёт игрока и позволяет управлять игроком с помощью клавиш управления курсором.
+The game sets the background, creates a player, and allows controlling the player using cursor keys.
 
-В файле [02.html](02.html) другой пример - движение игрока к заданной точке управляя мышью.
+In the file [02.html](02.html) there is another example - moving the player to a specified point by controlling with the mouse.
 
-## Инициализация игры
+## Game Initialization
 
 ```javascript
 let game = new ScratchGame(800, 600);
@@ -62,133 +62,133 @@ game.create = create;
 game.update = update;
 ```
 
-Функции preload, create и update должны быть определены в том же файле.
-800, 600 - размеры окна игры.
+The functions preload, create, and update must be defined in the same file.
+800, 600 are the dimensions of the game window.
 
-## Загрузка изображений в preload
+## Loading images in preload
 
-Функция `preload` (можно назвать как-то по другому, но тогда надо будет изменить и в иницилизации, например `game.preload = image_load;`, тогда функция должна будет называться `image_load`) предназначена для загрузки ресурсов нужных игре - картинок, музыки и т.п.
+The `preload` function (it can be named differently, but then you would need to change it in the initialization as well, e.g., `game.preload = image_load;`, then the function would need to be named `image_load`) is intended for loading resources needed by the game - images, music, etc.
 
-Вызывается один раз за игру, при загрузке страницы.
+It is called once per game, when the page loads.
 
 ```javascript
 function preload() {
-    // читается картинка из assets/sky.png и регистрируется в системе под именем sky
+    // reads the image from assets/sky.png and registers it in the system under the name sky
     this.loadImage('sky', 'assets/sky.png');
-    // читается картинка из 'assets/dude.png' и регистрируется в системе под именем dude
-    // загруженная картинка делится на куски высотой 48 пикселей и шириной 32 пикселей
-    // каждый кусок - это отдельный "костюм" (можно, наверное и отдельными картинками, но
-    // плодить миллион картинок - так себе план). Каждый "костюм" называется "frame".
+    // reads the image from 'assets/dude.png' and registers it in the system under the name dude
+    // the loaded image is divided into chunks 48 pixels high and 32 pixels wide
+    // each chunk is a separate "costume" (you could probably use separate images, but
+    // spawning a gazillion images is a so-so plan). Each "costume" is called a "frame".
     this.loadSpritesheet('dude', 'assets/dude.png', 32, 48);
 }
 ```
 
-## Создание игры
+## Creating the game
 
-Функция `create` вызывается один раз за игру, после загрузки всех ресурсов в preload.
+The `create` function is called once per game, after all resources in preload have been loaded.
 
 ```javascript
 function create() {
-    // установка картинки sky (должна быть загружена в preload) в качестве фона. 
-    // картинка должна быть размера не меньше размеров окна игры
-    // если картинка меньше, то она будет в центре окна
+    // setting the sky image (must be loaded in preload) as the background. 
+    // the image must be at least the size of the game window
+    // if the image is smaller, it will be in the center of the window
     this.changeBackground('sky');
 
-    // установка цвета фона
+    // setting the background color
     this.setBackgroundColor(0x00FFFF);
 
-    // создаём (клонируем) спрайт. Сам спрайт мы тоже можем записать в переменную 
-    // (здесь используется переменная player)
-    // которую можно использовать для управления спрайтом
+    // create (clone) a sprite. We can also save the sprite itself into a variable 
+    // (here the variable player is used)
+    // which can be used to control the sprite
     let player = this.createSprite(100, 100, 'dude');
-    // узнаём / задаём /изменяем позицию, направление (если не задать будет 0), размер 
-    // (если не задать будет 1)
+    // get / set / change position, direction (if not set will be 0), size 
+    // (if not set will be 1)
     player.x = 400;
     player.y = 300;
     player.direction = 90;
     player.size = 2;
 
-    // перемещаемся вперёд на нужное количество пикселей
+    // move forward by the specified number of pixels
     player.moveForward(10);
-    // поворачиваемся на нужное количество градусов
+    // turn by the specified number of degrees
     player.turn(15);
-    // поворачиваемся в направлении точки (x, y)
+    // turn towards the point (x, y)
     player.turnTo(x, y);
 
-    // изменяем X и Y на нужное количество пикселей
+    // change X and Y by the specified number of pixels
     player.x += 10;
     player.y += 10;
 
-    // переменная visible - видимость спрайта
-    // показать спрайт
+    // variable visible - visibility of the sprite
+    // show sprite
     player.visible = true;
-    // скрыть спрайт
+    // hide sprite
     player.visible = false;
-    // меняет видимость спрайта
+    // toggles sprite visibility
     player.changeVisibility();
 
-    // переменная costume - номер текущего костюма (фрейма), нумерация начинается с 0
-    // изменение номера костюма (фрейма)
+    // variable costume - number of the current costume (frame), numbering starts from 0
+    // changing the costume number (frame)
     player.costume = 5;
-    // текущий костюм (фрейм)
+    // current costume (frame)
     console.log(player.costume);
-    // количество костюмов (фреймов)
+    // count of costumes (frames)
     console.log(player.costumesCount);
-    // следующий костюм
+    // next costume
     player.nextCostume();
-    // переключает костюм на заданное количество позиций (по кругу)
+    // switches the costume by the specified number of positions (cyclically)
     player.changeCostumeBy(value);
 
-    // уничтожает спрайт, спрайт удаляется из игры и больше с ним ничего нельзя делать
+    // destroys the sprite, the sprite is removed from the game and nothing more can be done with it
     player.destroy();
 
-    // проверка столкновения спрайтов (сравниваются только прямоугольники)
+    // check for sprite collision (only rectangles are compared)
     player.onRectangularOverlap(anotherSprite, function (event) {
-        console.log("мои границы столкнулись с границами другого спрайта", event);
+        console.log("my boundaries collided with the boundaries of another sprite", event);
     });
 
-    // проверка столкновения спрайтов (сравниваются попиксельно, точность 2 пикселя)
+    // check for sprite collision (compared pixel-by-pixel, precision 2 pixels)
     player.onOverlap(anotherSprite, function (event) {
-        console.log("мои пиксели столкнулись с пикселями другого спрайта", event);
+        console.log("my pixels collided with the pixels of another sprite", event);
     });
 
-    // проверка столкновения спрайтов (сравниваются пиксели, точность 1 пиксель, медленнее,
-    // чем предыдущий вариант)
+    // check for sprite collision (pixels are compared, precision 1 pixel, slower
+    // than the previous option)
     player.onOverlap(anotherSprite, function (event) {
-        console.log("мои пиксели столкнулись с пикселями другого спрайта", event);
+        console.log("my pixels collided with the pixels of another sprite", event);
     }, 1);
 
-    // задание функции, которая будет вызываться при нажатии клавиши W
+    // defining a function that will be called when the W key is pressed
     this.onKeyDown("W", function (event) {
         console.log("W down", event.duration);
     });
-    // задание функции, которая будет вызываться при отпускании клавиши W
+    // defining a function that will be called when the W key is released
     this.onKeyUp("W", function (event) {
         console.log("W up", event.duration);
     });
 
-    // задание функции, которая будет вызываться при нажатии мыши
+    // defining a function that will be called on mouse down
     this.onMouseDown(function (event) {
         console.log("Mouse down", event);
     });
-    // задание функции, которая будет вызываться при отпускании мыши
+    // defining a function that will be called on mouse up
     this.onMouseUp(function (event) {
         console.log("Mouse up", event);
     });
 }
 ```
 
-## Обновление игры
+## Update Loop
 
-Функция `update` вызывается каждый "тик" игры, то есть несколько раз в секунду.
-Фактически, она замещает бесконечный цикл ("повторять всегда") в Scratch.
-После каждого выполнения update экран перерисовывается.
+The `update` function is called every "tick" of the game, that is, several times per second.
+In fact, it replaces the infinite loop ("forever") in Scratch.
+After each execution of update, the screen is redrawn.
 
 ```javascript
 function update() {
-    // проверяет, нажата ли клавиша A
+    // checks if the A key is pressed
     console.log(game.isKeyDown('A'));
-    // можно так-же использовать, для проверки нажатия клавиш курсора и специальных клавиш
+    // you can also use it to check for cursor keys and special keys
     console.log("up", game.isKeyDown('UP'));
     console.log("down", game.isKeyDown('DOWN'));
     console.log("left", game.isKeyDown('LEFT'));
@@ -200,45 +200,44 @@ function update() {
     console.log("enter", game.isKeyDown('ENTER'));
     console.log("esc", game.isKeyDown('ESC'));
 
-    // проверяет, нажата ли кнопка мыши
+    // checks if the mouse button is pressed
     console.log(game.isMouseDown());
-    // получает координаты мыши
+    // gets mouse coordinates
     console.log(game.mouseX, game.mouseY);
 
-    // узнать текущее время от начала игры в миллисекундах
+    // get the current time from the start of the game in milliseconds
     console.log(game.getTime());
 }
 ```
 
-## Текст
+## Text
 
-Обычно текст создается в функции `create`.
+Usually text is created in the `create` function.
 
 ```javascript
 function create() {
-    // создаём (клонируем) текст. Сам текст мы тоже можем записать в переменную 
-    // (здесь используется переменная text)
-    // которую можно использовать для управления текстом
+    // create (clone) text. We can also save the text itself into a variable 
+    // (here the variable text is used)
+    // which can be used to control the text
     text = this.createText(480, 20, "Demo Text");
-    // узнаём / задаём /изменяем шрифт текста
+    // get / set / change text font
     text.font = 'Arial';
-    // узнаём / задаём /изменяем размер текста
+    // get / set / change text size
     text.size = 24;
-    // узнаём / задаём /изменяем цвет текста
+    // get / set / change text color
     text.color = '#00FFFF';
 
-    // узнаём / задаём /изменяем позицию текста
+    // get / set / change text position
     text.x = 480;
     text.y = 20;
 
-    // узнаём / задаём /изменяем видимость текста
+    // get / set / change text visibility
     text.visible = true;
 
-    // узнаём / задаём /изменяем текст
+    // get / set / change text content
     text.text = 'Hello World';
 
-    // уничтожает текст, текст удаляется из игры и больше с ним ничего нельзя делать
+    // destroys the text, the text is removed from the game and nothing more can be done with it
     text.destroy();
 }
 ```
-
