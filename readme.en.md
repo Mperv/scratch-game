@@ -1,8 +1,8 @@
 # ScratchGame v0.26.6b
 
-English version of this readme is in [readme.en.md](readme.en.md)
+Русская версия [readme.md](readme.md)
 
-## Начало / подготовка
+## Getting started / preparation
 
 Для разработки игры на Phaser и ScratchGame необходимо:
 - скачать phaser.min.js и scratch_game.js, поместить их в папку lib
