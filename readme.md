@@ -1,5 +1,7 @@
 # ScratchGame v0.26.6b
 
+English version of this readme is in [readme.en.md](readme.en.md)
+
 ## Начало / подготовка
 
 Для разработки игры на Phaser и ScratchGame необходимо:
