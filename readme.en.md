@@ -1,4 +1,4 @@
-# ScratchGame v0.26.6b
+# ScratchGame v0.26.8a
 
 Русская версия этого файла [readme.md](readme.md)
 
