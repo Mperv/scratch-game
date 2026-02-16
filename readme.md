@@ -1,4 +1,4 @@
-# ScratchGame v0.26.6b
+# ScratchGame v1.26.8a
 
 English version of this readme is in [readme.en.md](readme.en.md)
 
