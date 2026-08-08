@@ -48,8 +48,17 @@
             text1.size = 24;
             text1.color = '#00FFFF';
 
+            player.bringToFront();
+
             text2 = this.createText(10, 550, "");
             text2.color = '#FFFFFF';
+
+            text3 = this.createText(400, 300, "DEMO #2");
+            text3.makeXYCentred();
+            text3.font = 'Ariabl bold';
+            text3.size = 20;
+            text3.color = '#FFFFFF';
+            text3.sendToBack();
 
             this.onMouseDown(function (event) {
                 startX = player.x;
