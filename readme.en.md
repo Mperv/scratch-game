@@ -1,4 +1,4 @@
-# ScratchGame v0.26.8a
+# ScratchGame v1.27.0
 
 Русская версия этого файла [readme.md](readme.md)
 
@@ -142,6 +142,12 @@ function create() {
     // destroys the sprite, the sprite is removed from the game and nothing more can be done with it
     player.destroy();
 
+    // brings the sprite to the front, so it is on top of everything else
+    player.bringToFront();
+
+    // sends the sprite to the back, so it is behind everything else
+    player.sendToBack();
+
     // check for sprite collision (only rectangles are compared)
     player.onRectangularOverlap(anotherSprite, function (event) {
         console.log("my boundaries collided with the boundaries of another sprite", event);
@@ -239,5 +245,14 @@ function create() {
 
     // destroys the text, the text is removed from the game and nothing more can be done with it
     text.destroy();
+
+    // now the coordinates define the center of the text instead of the top-left corner
+    text.makeXYCentred();
+
+    // brings the text to the front, so it is on top of everything else
+    text.bringToFront();
+
+    // sends the text to the back, so it is behind everything else
+    text.sendToBack();
 }
 ```
